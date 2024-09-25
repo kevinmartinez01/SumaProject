@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/kevinmartinez01/SumaProject.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                sh 'javac src/main/java/Suma.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                sh 'java -cp src/main/java Suma'
+            }
+        }
+    }
+}
